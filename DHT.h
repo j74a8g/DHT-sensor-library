@@ -17,7 +17,12 @@
 #ifndef DHT_H
 #define DHT_H
 
+#ifndef ARDUINO
+#include <Adafruit_Sensor.h>
+#include "esp_dth_port.h"
+#else
 #include "Arduino.h"
+#endif
 
 /* Uncomment to enable printing out nice debug messages. */
 //#define DHT_DEBUG
@@ -56,7 +61,8 @@ class DHT {
    float readHumidity(bool force=false);
    bool read(bool force=false);
 
- private:
+//  private:
+ protected:
   uint8_t data[5];
   uint8_t _pin, _type;
   #ifdef __AVR
@@ -68,7 +74,7 @@ class DHT {
   bool _lastresult;
   uint8_t pullTime; // Time (in usec) to pull up data line before reading
 
-  uint32_t expectPulse(bool level);
+  virtual uint32_t expectPulse(bool level);
 
 };
 

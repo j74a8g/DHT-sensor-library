@@ -33,6 +33,7 @@
 #ifndef DHT_U_H
 #define DHT_U_H
 
+#include "esp_dth_port.h"
 #include <Adafruit_Sensor.h>
 #include <DHT.h>
 
